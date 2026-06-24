@@ -1,0 +1,21 @@
+[package]
+name = "ring-buffer-pipeline"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+crossbeam-channel = "0.5"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+thiserror = "1"
+
+[dev-dependencies]
+criterion = { version = "0.5", features = ["html_reports"] }
+
+[[bench]]
+name = "pipeline_bench"
+harness = false
+
+[profile.bench]
+opt-level = 3
+debug = true        # keep symbols for flamegraph
